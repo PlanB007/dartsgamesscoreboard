@@ -1,1 +1,13 @@
+ion-card-header {
+    text-align: center;
+    height: calc(80vh - 113px);
+}
 
+ion-card-title {
+    font-size: 5rem;
+    position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+    transform: translateY(-50%);
+}

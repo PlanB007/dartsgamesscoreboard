@@ -13,20 +13,26 @@ export class Tab2Page {
   constructor(public toastController: ToastController) {}
 
   updateScore(score:number) {
-    this.remainingScore = this.remainingScore + score;
-
+    
+    // Check if hit the bull, then the game is finished
+    if(this.remainingScore.toString() == 'bull' && score > 0){
+      console.log('winner');
+      this.presentToast();
+      this.remainingScore = 1;
+      return;
+    }
+    // new turn when score isn't 3
     if(score != 3 ) {
       this.currentTurn = this.currentTurn + 1;
     }
-    if(this.remainingScore > 20) {
+
+    // Change the remaining number to bull, since there isn't 21 in darts
+    if(this.remainingScore >= 20) {
       this.remainingScore = 'bull'
+      return;
     }
-
-    if(this.remainingScore == 'bull' && score > 0){
-      this.presentToast();
-      this.remainingScore = 1;
-
-    }
+    
+    this.remainingScore = this.remainingScore + score;
   }
 
   async presentToast() {
