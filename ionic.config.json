@@ -1,6 +1,9 @@
 {
   "name": "DartsGamesScoreboard",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
   "type": "angular",
   "id": "ee38562e"
 }
