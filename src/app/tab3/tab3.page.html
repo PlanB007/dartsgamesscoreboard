@@ -1,12 +1,53 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Contact
+      Current game: {{currentGameType}}
+      <ion-button color="danger" size="small" (click)="resetGame()" *ngIf="GameSelected">Reset</ion-button>
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-card-content>
-  <p>If you have any issue while using the app please contact: <a href="mailto:dartsgamesscoreboard@kevinrouwkema.nl">dartsgamesscoreboard@kevinrouwkema.nl</a>  or visit the git repo at: <a href="">GitHub</a></p>
+<ion-card-content *ngIf="!GameSelected">
+  <h1>Choose game</h1>
+  <ion-grid>
+    <ion-row>
+      <ion-col><ion-button expand="full" color="tertiary" (click)="gameType(301)">301</ion-button></ion-col>
+      <ion-col><ion-button expand="full" color="tertiary" (click)="gameType(501)">501</ion-button></ion-col>
+      <ion-col><ion-button expand="full" color="tertiary" (click)="gameType(701)">701</ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card-content>
+<ion-card-content *ngIf="GameSelected">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Current turn: {{currentTurn}}</ion-card-subtitle>
+      <ion-card-title>Remaining score: {{remainingScore}}</ion-card-title>
+    </ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col>Your score: {{score}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><ion-button expand="full" color="tertiary" (click)="updateScore(1)">1</ion-button></ion-col>
+        <ion-col><ion-button expand="full" color="tertiary" (click)="updateScore(2)">2</ion-button></ion-col>
+        <ion-col><ion-button expand="full" color="tertiary" (click)="updateScore(3)">3</ion-button></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><ion-button expand="full" color="tertiary" (click)="updateScore(4)">4</ion-button></ion-col>
+        <ion-col><ion-button expand="full" color="tertiary" (click)="updateScore(5)">5</ion-button></ion-col>
+        <ion-col><ion-button expand="full" color="tertiary" (click)="updateScore(6)">6</ion-button></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><ion-button expand="full" color="tertiary" (click)="updateScore(1)">7</ion-button></ion-col>
+        <ion-col><ion-button expand="full" color="tertiary" (click)="updateScore(2)">8</ion-button></ion-col>
+        <ion-col><ion-button expand="full" color="tertiary" (click)="updateScore(3)">9</ion-button></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><ion-button expand="full" color="tertiary" (click)="editScore()"><ion-icon name="backspace"></ion-icon></ion-button></ion-col>
+        <ion-col><ion-button expand="full" color="tertiary" (click)="updateScore(0)">0</ion-button></ion-col>
+        <ion-col><ion-button expand="full" color="tertiary" (click)="submitScore()"><ion-icon name="checkmark-circle"></ion-icon></ion-button></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-card-content>
 
 <ion-content></ion-content>
